@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Лабиринт v1.0</title>
+<style type="text/css">
+html {
+	background: url("img/pages/background.jpg") no-repeat top center #000000;
+}
+
+body {
+	margin: auto;
+}
+
+p {
+	text-indent: 0px;
+padding: 0px 55px 0px 50px;
+}
+
+#infoText {
+    height: 70px;
+    overflow-y: auto;
+}
+
+#zap {
+	width: 100%;
+left: 0px;
+top: 0px;
+}
+
+#mainImg {
+	display: block;
+	position: relative;
+	width: 816px;
+    height: 401px;
+    margin: 138px auto 0 auto;
+}
+
+
+#btnGoUp {
+	position: absolute;
+	left: 50%;
+    margin-left: -39px;
+    top: 105px;
+	width: 70px;
+	height: 70px;
+	background-image: url('img/arrows/up.png');
+	background-position: -5px -5px;
+}
+#btnGoRight {
+	position: absolute;
+	left: 50%;
+    margin-left: 336px;
+    top: 249px;
+    width: 75px;
+	height: 75px;
+	background-image: url('img/arrows/right.png');
+	background-position: -3px -3px;
+}
+#btnGoDown {
+	position: absolute;
+	left: 50%;
+    margin-left: -40px;
+    top: 511px;
+	width: 75px;
+	height: 75px;
+	background-image: url('img/arrows/down.png');
+	background-position: -3px -3px;
+}
+#btnGoLeft {
+	position: absolute;
+	left: 50%;
+    margin-left: -415px;
+    top: 249px;
+	width: 75px;
+	height: 75px;
+	background-image: url('img/arrows/left.png');
+	background-position: -3px -3px;
+}
+
+.btnGo:hover {
+	cursor: pointer;
+}
+#btnGoUp:hover {
+	background-image: url('img/arrows/ups.png');
+}
+#btnGoRight:hover {
+	background-image: url('img/arrows/rights.png');
+}
+#btnGoDown:hover {
+	background-image: url('img/arrows/downs.png');
+}
+#btnGoLeft:hover {
+	background-image: url('img/arrows/lefts.png');
+}
+
+
+#divInfo {
+	position: absolute;
+	display: none;
+	z-index: 10;
+	overflow: hidden;
+	color: rgba(210, 220, 230, 0.64);
+	text-align: center;
+	font-family: Bebas Neue, Arial;
+	font-size: 17px;
+	width: 853px;
+	height: 110px;
+	left: 50%;
+	margin-left: -429px;
+	top: 643px;
+	text-align: justify;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 6px;
+}
+
+.btnCloseInfo {
+	padding: 0px 3px;
+	background-color: rgba(136, 140, 152, 0.67);
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bolder;
+	color: #171717;
+padding: 50px 3px;
+}
+
+.loaderArea {
+  background: black;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom:0;
+  z-index: 100000;
+}
+
+.loaders {
+  position: absolute;
+  top: calc(50% - 48px);
+  left: calc(50% - 48px);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  perspective: 800px;
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;  
+}
+
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 3px solid #B4FFC5;
+  box-shadow: 0px 10px 10px -5px #0c8a28;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 3px solid #B4FFC5;
+box-shadow: 10px 00px 10px -5px #0c8a28;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 3px solid #B4FFC5;
+  box-shadow: 0px -10px 10px -5px #0c8a28;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="loaderArea">
+   <div class="loaders">
+  <div class="inner one"></div>
+  <div class="inner two"></div>
+  <div class="inner three"></div>
+   </div>
+</div>
+<img id="mainImg" src="img/minpict.png">
+<div id="btnGoUp" class="btnGo" onclick="gogogo(0);"></div>
+<div id="btnGoRight" class="btnGo" onclick="gogogo(1);"></div>
+<div id="btnGoDown" class="btnGo" onclick="gogogo(2);"></div>
+<div id="btnGoLeft" class="btnGo" onclick="gogogo(3);"></div>
+
+<div id="divInfo">
+	<table cellspacing="0" align="right">
+	<tr><td class="btnCloseInfo" onClick="$('#divInfo').fadeOut(400);" onMouseOver="this.style.cursor='pointer'" onMouseOut="this.style.cursor='default'">Х</td></tr>
+	</table>
+	<p id="infoText"></p>
+</div>
+
+<map name="map2">
+	<area shape="rect" coords="368,168,463,333" href="javascript:showInfo(2,1);" style="cursor: help;">
+</map>
+<map name="map3">
+	<area shape="rect" coords="107,77,266,314" href="javascript:showInfo(3,1);" style="cursor: help;">
+		<area shape="rect" coords="617,88,676,210" href="javascript:showInfo(3,2);" style="cursor: help;">
+</map>
+<map name="map4">
+	<area shape="rect" coords="117,222,207,309" href="javascript:showInfo(4,1);" style="cursor: help;">
+		<area shape="rect" coords="359,283,488,318" href="javascript:showInfo(4,2);" style="cursor: help;">
+</map>
+<map name="map5">
+	<area shape="rect" coords="347,195,442,310" href="javascript:showInfo(5,1);" style="cursor: help;">
+</map>
+<map name="map6">
+	<area shape="rect" coords="720,121,805,231" href="javascript:showInfo(6,1);" style="cursor: help;">
+	<area shape="rect" coords="100,128,240,316" href="javascript:showInfo(6,2);" style="cursor: help;">
+	<area shape="rect" coords="414,113,480,300" href="javascript:showInfo(6,3);" style="cursor: help;">
+	<area shape="rect" coords="350,233,392,257" href="javascript:showInfo(6,4);" style="cursor: help;">
+</map>
+<map name="map7">
+	<area shape="rect" coords="212,194,408,318" href="javascript:showInfo(7,1);" style="cursor: help;">
+		<area shape="rect" coords="524,264,628,321" href="javascript:showInfo(7,2);" style="cursor: help;">
+</map>
+<map name="map8">
+	<area shape="rect" coords="327,221,388,3273" href="javascript:showInfo(8,1);" style="cursor: help;">
+		<area shape="rect" coords="512,219,540,242" href="javascript:showInfo(8,2);" style="cursor: help;">
+</map>
+<map name="map9">
+	<area shape="rect" coords="364,203,580,254" href="javascript:showInfo(9,1);" style="cursor: help;">
+</map>
+		
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+	$(function() {
+		currentLocation = 1;
+	
+		aWays = [];
+		aWays[1] = [2,0,0,0];
+		aWays[2] = [3,0,0,0];
+		aWays[3] = [4,0,0,2];
+		aWays[4] = [0,5,3,0];
+		aWays[5] = [6,0,4,0];		
+		aWays[6] = [0,5,0,7];	
+		aWays[7] = [0,8,6,0];	
+		aWays[8] = [9,0,7,0];
+		aWays[9] = [0,0,8,10];
+		aWays[10] = [0,0,0,0];
+
+		aTexts = [];
+		aTexts[2] = [];
+			aTexts[2][1] = "Так, что у нас тут имеется...<br>*тишина*";
+		aTexts[3] = [];
+			aTexts[3][1] = "Я пока не собираюсь уходить!";
+			aTexts[3][2] = "Я вижу свет в конце тоннеля... <br>*насвистывает мелодию*";
+	    aTexts[4] = [];
+			aTexts[4][1] = "О, бочка!<br>Хмм...пустая. Кто-то выпил всё пЫво. Ненасытный какой.";
+			aTexts[4][2] = "Тень змейса! <br>*злорадный смех*<br>";
+		aTexts[5] = [];
+			aTexts[5][1] = "*крик*<br>Что за...<br>Это оно опустошает бочки с пЫвом?! *шипение*<br> Остолбеней!";
+        aTexts[6] = [];
+			aTexts[6][1] = "Да не хочу я обратно! <br>Мне надо найти эту сущность.<br> Это же сколько галлеонов за неё дадут в Косом переулке. ";
+	        aTexts[6][2] = "Странно, там нет света. Неужели это существо уничтожено? Надо сходить проверить.";
+			aTexts[6][3] = "Тупик...<br> Наверняка потайная дверь <br>Алохомора!<br>*гул*<br>Эх, не сработало.";
+			aTexts[6][4] = "Пустые бутылки из-под пЫва... какое варварство!";
+		aTexts[7] = [];
+			aTexts[7][1] = "Сколько же тут пустых бочек?";
+			aTexts[7][2] = "Тут раньше что-то было...";
+		aTexts[8] = [];
+			aTexts[8][1] = "Эта сущность не одна?";
+			aTexts[8][2] = "Интересно, куда они все летят?";
+		aTexts[9] = [];
+			aTexts[9][1] = "Воу! Так это змея? <br>*шипение*<br>Стоп, бочки, змея, отсутствие пЫва...<br>Змейская совесть! *радостный писк*";
+	
+		loadLocation(currentLocation);
+	});
+	
+	function loadLocation(location) {
+		currentLocation = location;
+		
+		$('#mainImg').fadeOut(600, function() {
+			$('#mainImg').attr("src", "img/pages/" + currentLocation + ".jpg");
+			$('#mainImg').fadeIn(800);
+			$('#mainImg').attr("usemap", "#map"+location);
+		});
+		
+		$('.btnGo').hide();
+		if (aWays[currentLocation][0] != 0) {
+			$('#btnGoUp').show();
+		}
+		if (aWays[currentLocation][1] != 0) {
+			$('#btnGoRight').show();
+		}
+		if (aWays[currentLocation][2] != 0) {
+			$('#btnGoDown').show();
+		}
+		if (aWays[currentLocation][3] != 0) {
+			$('#btnGoLeft').show();
+		}
+	}
+	
+	function gogogo(direction) {
+		$('#divInfo').fadeOut(400);
+		loadLocation(aWays[currentLocation][direction]);
+	}
+	
+	function showInfo(location,k) {
+		$('#divInfo').fadeOut(400, function() {
+			$('#infoText').html(aTexts[location][k]);
+			$('#divInfo').fadeIn(600);
+		});
+	}
+</script>
+<script>
+  $(window).on('load', function () {
+    $preloader = $('.loaderArea'),
+      $loader = $preloader.find('.loader');
+    $loader.fadeOut();
+    $preloader.delay(2500).fadeOut('slow');
+  });
+</script>
+</body>
+</html>

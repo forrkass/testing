@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div class="quotes" style="display:none;">Елочку никто ничем не напоит, и компании на полянке не придется выслушивать ее развеселые песнопения.</div>
+<div class="quotes" style="display:none;">Крыша замка не обвалится ни в одном месте. И кладка не треснет. И стены не пошатнутся.</div>
+<div class="quotes" style="display:none;">Ничье свежепридуманное заклинание не окажется вдруг страшным проклятьем, позабытым с древних времен.</div>
+<div class="quotes" style="display:none;">Ничья волшебная палочка не окажется втихаря подменена на обычную.</div>
+<div class="quotes" style="display:none;">Кальмар не затащит по ошибке на чай водоплавающего анимага.</div>
+<div class="quotes" style="display:none;">Кухонные эльфы точно не перепутают соль с сахаром, а перец – с тертым шоколадом.</div>
+<div class="quotes" style="display:none;">Никто не переоденет миссис Норрис в костюм дракончика, и огненное дыхание ей тоже не наколдует.</div>
+<div class="quotes" style="display:none;">Никто не соберет втихаря все грибочки на день вперед.</div>
+<div class="quotes" style="display:none;">Ни у кого не заест застежка на новомодной куртке-невидимке, и нам не придется всем замком никого искать.</div>
+<div class="quotes" style="display:none;">Никто из змейсов не попытается ничего взорвать. За остальных, правда, отвечать не беремся.</div>
+<div class="quotes" style="display:none;">Ни у одного орла ничего не налипнет на перья (и как у них крылья чистыми остаются?..)</div>
+<div class="quotes" style="display:none;">Ни один зеленый апельсин не окажется обычным недоспелым оранжевым.</div>
+<div class="quotes" style="display:none;">Ничей нюхлер не станет подначивать остальных утащить Кубок.</div>
+<div class="quotes" style="display:none;">Пойманная к обеду рыба не окажется вдруг живой и весьма разумной, в результате чего еда от нас в самом прямом смысле уплыла бы.</div>
+<div class="quotes" style="display:none;">Ни у одного барсука на спине ровные полосочки не станут внезапно зигзагом.</div>
+<div class="quotes" style="display:none;">Ни один человек в Лесу, неумело применив Орхидеус, не превратит всех присутствующих в огромное ведро слизек.</div>
+<div class="quotes" style="display:none;">Никто не затеет очередное похищение (поверьте, мы бы знали).</div>
+<div class="quotes" style="display:none;">Ничей питомец не потребует своего зачисления в Хогвартс… хотя тут даже жалко.</div>
+<div class="quotes" style="display:none;">Ни одна башня замка не решит перепрятаться на новое место.</div>
+<div class="quotes" style="display:none;">Ниоткуда не сбежит ни один тролль. Даже интернетный.</div>
+<div class="quotes" style="display:none;">Ни один преподаватель не найдет забытой с прошлого семестра домашки.</div>
+<div class="quotes" style="display:none;">Ни в одной кружке горячего шоколада не окажется неправильный его сорт.</div>
+<div class="quotes" style="display:none;">Ни одна квиддич-травинка с Поля не пропадет. И если вы сомневаетесь, что это хорошо, вспомните, какой ужас творился в прошлый раз.</div>
+<div class="quotes" style="display:none;">Ни одна банка сгущенки не окажется чересчур или недостаточно варёной.</div>
+<div class="quotes" style="display:none;">Никто не напутает с зельем увеличения, и нам не придется всем замком с неделю жевать одну картофелину.</div>
+<div class="quotes" style="display:none;">Никто не перепутает и не завалится по ошибке в ванную префектов. Никто не хочет знать, что там творится, поверьте.</div>
+<div class="quotes" style="display:none;">Ни в один котел с глинтвейном не залетит муха.</div>
+<div class="quotes" style="display:none;">Ни одного попугая на опушке не научат новому бранному словечку (у них, впрочем, и так лексикон весьма богатый).</div>
+<div class="quotes" style="display:none;">Никого не заклинит в его анимагической форме, и нам не придется спасать или спасаться (в зависимости от натуры и габаритов зверушки).</div>
+<div class="quotes" style="display:none;">Никто, наконец, не останется голодным – ведь есть, как минимум, наш тортик. Приятного аппетита ^^</div>
+
+<p><input value="Загадать" onclick="window.location.reload()" type="button"></p>
+
+
+<script type="text/javascript">
+//I. Задаем переменные
+//узнаем длину массива
+number = document.getElementsByClassName('quotes');
+
+//определяем отдельную переменную для каждого class quotes в массиве
+var randomquote = [];
+for (i=0; i<=number.length; i++)  {
+randomquote[i] = document.getElementsByClassName('quotes')[i];
+	    randomquote.push(randomquote[i]);
+				        }
+
+//II. Функция генерирующая число от 0 до n 
+function randomzero (n)
+{
+  return ( Math.floor ( Math.random ( )*0.9999999999999999* (n + 1)) );
+}
+
+//III. assign any random number from 0 to number1 to x.
+var number1 = number.length-1;
+
+x = randomzero(number1);
+
+//IV. Показать цитату
+randomquote[x].style.display = 'block';
+
+
+</script>
+</body>
+</html>
